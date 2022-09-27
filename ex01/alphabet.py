@@ -26,7 +26,7 @@ def kaito(seikai):
                 return False
             else:
                 seikai.remove(c)
-        print("欠損文字も含めて完全正解です！！！")
+        print("欠損文字も含めて全問正解です！！！")#全問正解した場合
         return True
     return False
         
