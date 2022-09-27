@@ -4,8 +4,8 @@ def shutudai():
    alp=[]
    for i in range(65,91):
        alp.append(chr(i))
-   l=random.sample(alp,7)
-   a=random.sample(l,2)
+   l=random.sample(alp,7)　　#対象文字は7文字
+   a=random.sample(l,2)　　#欠損文字は2文字
    print(f"対象文字列:\n{l}")
    print(f"欠損文字:\n{a}")
    for i in a:
@@ -15,9 +15,9 @@ def shutudai():
 
 def kaito(seikai):
     num=int(input("欠損文字はいくつあるでしょうか？："))
-    if num !=2:
+    if num !=2:　#答えと違う場合
         print("不正解です")
-    else:
+    else:　#答えと同じ場合
         print("正解です．では，具体的に欠損文字を1つずつ入力してください．")
         for i in range(num):
             c = input(f"{i+1}文字目を入力してください：")
