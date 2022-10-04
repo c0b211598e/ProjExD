@@ -13,10 +13,10 @@ def click_bth(event):
 def click_btr(event):
     tkm.showinfo("イベント","私は一向に構わんッッ")
 
-def click_point(event):
-    btn = event.widget
-    num = btn["text"]
-    entry.insert(tk.END, num) 
+#def click_point(event):
+#    btn = event.widget
+#    num = btn["text"]
+#    entry.insert(tk.END, num) 
 
 
 def click_AC(event):
@@ -52,15 +52,19 @@ for i, num in enumerate(numbers+operators, 1): #練習６
 btn = tk.Button(root, text=f"花山", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
 btn.bind("<1>", click_bth)
 btn.grid(row=3, column=3)
-　#烈
+ #烈
 btn = tk.Button(root, text=f"烈", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
 btn.bind("<1>", click_btr)
 btn.grid(row=4, column=3)
 
  #小数点
-btn = tk.Button(root, text=f".", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
-btn.bind("<1>", click_point)
-btn.grid(row=2, column=3)
+btn = tk.Button(root, text=".", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
+btn.bind("<1>", button_click)
+btn.grid(row=2,column=3)
+
+#btn = tk.Button(root, text=f".", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
+#btn.bind("<1>", click_point)
+#btn.grid(row=2, column=3)
  
  # ACボタン作成
 btn = tk.Button(root, text=f"AC", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
