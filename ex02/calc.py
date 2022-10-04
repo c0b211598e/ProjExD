@@ -8,6 +8,12 @@ def button_click(event):
     entry.insert(tk.END, num) #練習5
 
 
+def click_equal(event):
+    eqn = entry.get()
+    result = eval(eqn)
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, result) #練習7 
+
 root = tk.Tk()
 #root.title("おためしか")
 root.geometry("300x500")
@@ -29,7 +35,9 @@ for i, num in enumerate(numbers+operators, 1): #練習６
        c = 0
     
     
-
+btn = tk.Button(root, text=f"=", font=("Times New Roman", 30), width=4, height=2)
+btn.bind("<1>", click_equal)
+btn.grid(row=r, column=c)
 
 root.mainloop()
 
