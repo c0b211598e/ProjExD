@@ -48,11 +48,11 @@ for i, num in enumerate(numbers+operators, 1): #練習６
     if i%3 == 0:
        r += 1
        c = 0
-
+ #花山
 btn = tk.Button(root, text=f"花山", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
 btn.bind("<1>", click_bth)
 btn.grid(row=3, column=3)
-
+　#烈
 btn = tk.Button(root, text=f"烈", font=("Times New Roman", 30), bg="#ff7f00", fg="black", width=4, height=1)
 btn.bind("<1>", click_btr)
 btn.grid(row=4, column=3)
