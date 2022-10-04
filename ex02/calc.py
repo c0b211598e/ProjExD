@@ -11,7 +11,7 @@ def click_bth(event):
     tkm.showwarning("警告","まだやるかい？")
 
 def click_btr(event):
-    tkm.showwarning("警告","私は一向に構わんッッ")
+    tkm.showinfo("イベント","私は一向に構わんッッ")
 
 def click_point(event):
     btn = event.widget
