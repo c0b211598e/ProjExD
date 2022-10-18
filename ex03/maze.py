@@ -41,13 +41,11 @@ def main_proc():
         cx, cy = mx*100+50 ,my*100+50
     
     if my==7 and mx==13:
+        tori = tk.PhotoImage(file="fig/4.png")
         tkm.showinfo("ゴール", f"おめっ!!")
 
     else:
         root.after(100,main_proc)
-
-
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
