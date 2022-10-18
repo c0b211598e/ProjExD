@@ -10,7 +10,7 @@ def key_up(event):
     global key
     key = ""
 
-def main_proc():
+def main_proc():#こうかとんの移動
     global mx, my
     global cx, cy
     if key == "Up":
@@ -35,12 +35,12 @@ def main_proc():
             mx -= 1
     canv.coords("tori", cx, cy)
 
-    if key == "x":
+    if key == "x":#テレポート
         my=6
         mx=13
         cx, cy = mx*100+50 ,my*100+50
     
-    if my==7 and mx==13:
+    if my==7 and mx==13:#ゴール判定
         tori = tk.PhotoImage(file="fig/4.png")
         tkm.showinfo("ゴール", f"おめっ!!")
 
