@@ -41,7 +41,7 @@ def main_proc():#こうかとんの移動
         cx, cy = mx*100+50 ,my*100+50
     
     if my==7 and mx==13:#ゴール判定
-        tori = tk.PhotoImage(file="fig/4.png")
+        canv.create_image(cx,cy,image=tori1,tag="tori1")
         tkm.showinfo("ゴール", f"おめっ!!")
 
     else:
@@ -58,6 +58,7 @@ if __name__ == "__main__":
     mm.show_maze(canv, maze_lst)
 
     tori = tk.PhotoImage(file="fig/3.png")
+    tori1= tk.PhotoImage(file="fig/9.png")
     mx, my= 1, 1
     cx, cy = mx*100+50, my*100+50
     canv.create_image(cx, cy, image=tori, tag="tori")
