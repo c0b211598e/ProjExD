@@ -41,7 +41,7 @@ def main_proc():#こうかとんの移動
         cx, cy = mx*100+50 ,my*100+50
     
     if my==7 and mx==13:#ゴール判定
-        canv.create_image(cx,cy,image=tori1,tag="tori1")
+        canv.create_image(cx,cy,image=tori1,tag="tori1")#画像の変更
         tkm.showinfo("ゴール", f"おめっ!!")
 
     else:
