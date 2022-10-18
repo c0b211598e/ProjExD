@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.messagebox as tkm
 import maze_maker as mm
 
 def key_down(event):
@@ -20,7 +21,7 @@ def main_proc():
         mx -= 1
     if key == "Right":
         mx += 1
-    if maze_lst[my][mx] ==  0:
+    if maze_lst[my][mx] !=1  :
         cx, cy = mx*100+50 ,my*100+50
 
     else:
@@ -33,7 +34,18 @@ def main_proc():
         if key == "Right":
             mx -= 1
     canv.coords("tori", cx, cy)
-    root.after(100, main_proc)
+
+    if key == "x":
+        my=6
+        mx=13
+        cx, cy = mx*100+50 ,my*100+50
+    
+    if my==7 and mx==13:
+        tkm.showinfo("ゴール", f"おめっ!!")
+
+    else:
+        root.after(100,main_proc)
+
 
 
 if __name__ == "__main__":
@@ -47,7 +59,7 @@ if __name__ == "__main__":
     #print(maze_lst)
     mm.show_maze(canv, maze_lst)
 
-    tori = tk.PhotoImage(file="fig/5.png")
+    tori = tk.PhotoImage(file="fig/3.png")
     mx, my= 1, 1
     cx, cy = mx*100+50, my*100+50
     canv.create_image(cx, cy, image=tori, tag="tori")
