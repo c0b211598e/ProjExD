@@ -64,7 +64,7 @@ def main():
                 return
 
         key_states = pg.key.get_pressed()
-        if key_states[pg.K_UP]: tori_rct.centery -= 1
+        if key_states[pg.K_UP] and tate != -1: tori_rct.centery -= 1
         if key_states[pg.K_DOWN]: tori_rct.centery += 1
         if key_states[pg.K_LEFT]: tori_rct.centerx -= 1
         if key_states[pg.K_RIGHT]: tori_rct.centerx += 1
@@ -91,6 +91,14 @@ def main():
         yoko, tate = check_bound(bomb_rct2, scrn_rct)#壁判定爆弾2
         vx2 *= yoko
         vy2 *= tate
+        if vx2 < 0:
+            vx2 -=0.01
+        if vx2 > 0:
+            vx2 +=0.01
+        if vy2 < 0:
+            vy2 -=0.01
+        if vy2 > 0:
+            vy2 +=0.01
 
         bomb_rct1.move_ip(vx1, vy1)
         bomb_rct2.move_ip(vx2, vy2)
