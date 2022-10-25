@@ -11,9 +11,9 @@ def main():
 
     #れんしゅう３
     tori_sfc = pg.image.load("fig/6.png")
-    tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 2.0)
+    tori_sfc = pg.transform.rotozoom(tori_sfc, 180, 2.0)
     tori_rct = tori_sfc.get_rect()
-    tori_rct.center = 800, 400
+    tori_rct.center = 900, 400
 
     clock = pg.time.Clock() #練習1
     while True:
@@ -22,6 +22,13 @@ def main():
         for event in pg.event.get(): #練習2
             if event.type == pg.QUIT:
                 return
+
+        key_states = pg.key.get_pressed()
+        if key_states[pg.K_UP]: tori_rct.centery -= 1
+        if key_states[pg.K_DOWN]: tori_rct.centery += 1
+        if key_states[pg.K_LEFT]: tori_rct.centerx -=1
+        if key_states[pg.K_RIGHT]: tori_rct.centerx +=1
+        
 
         scrn_sfc.blit(tori_sfc, tori_rct)#こうかとん
         
