@@ -1,7 +1,9 @@
-from inspect import FullArgSpec
+import tkinter as tk
+import tkinter.messagebox as tkm
 from random import randint
 import pygame as pg
 import sys
+
 
 def check_bound(obj_rct, scr_rct):#obj_rct:こうかとん,爆弾rct
     
@@ -31,7 +33,8 @@ def main():
     #練習5
     bomb_sfc1 = pg.Surface((20, 20))
     bomb_sfc1.set_colorkey((0, 0, 0)) #透過
-    pg.draw.circle(bomb_sfc1, (255, 0, 0), (10, 10), 10) #円を描く
+    ch=10
+    pg.draw.circle(bomb_sfc1, (255, 0, 0), (10, 10), ch) #円を描く
     bomb_rct1 = bomb_sfc1.get_rect()
     bomb_rct1.centerx = randint(0,scrn_rct.width)
     bomb_rct1.centery = randint(0, scrn_rct.height)
@@ -47,7 +50,12 @@ def main():
     vx1,vy1 = +1, +1
     vx2,vy2 = -1, -1
 
+    
     clock = pg.time.Clock() #練習1
+
+    
+
+
     while True:
         scrn_sfc.blit(bg_sfc, bg_rct) #背景
         
@@ -75,10 +83,12 @@ def main():
 
         scrn_sfc.blit(tori_sfc, tori_rct)#こうかとん
 
-        yoko, tate = check_bound(bomb_rct1, scrn_rct)#壁判定
+        yoko, tate = check_bound(bomb_rct1, scrn_rct)#壁判定爆弾1
         vx1 *= yoko
         vy1 *= tate
-        yoko, tate = check_bound(bomb_rct2, scrn_rct)#壁判定
+    
+
+        yoko, tate = check_bound(bomb_rct2, scrn_rct)#壁判定爆弾2
         vx2 *= yoko
         vy2 *= tate
 
@@ -86,7 +96,38 @@ def main():
         bomb_rct2.move_ip(vx2, vy2)
         scrn_sfc.blit(bomb_sfc1, bomb_rct1)#練習5
         scrn_sfc.blit(bomb_sfc2, bomb_rct2)
-        
+
+        if tori_rct.colliderect(bomb_rct1):#こうかとん爆弾1重なったら
+            tori_sfc = pg.image.load("fig/8.png")
+            tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 3.0)
+            tori_rct.center = tori_rct.centerx, tori_rct.centery
+            scrn_sfc.blit(tori_sfc, tori_rct)#こうかとん
+            pg.display.update()
+            tkm.showinfo("GameOver", f"こうかとんは爆死した")
+
+            return
+
+        if tori_rct.colliderect(bomb_rct2):#こうかとん爆弾2重なったら
+            tori_sfc = pg.image.load("fig/8.png")
+            tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 3.0)
+            tori_rct.center = tori_rct.centerx, tori_rct.centery
+            scrn_sfc.blit(tori_sfc, tori_rct)#こうかとん
+            pg.display.update()
+            tkm.showinfo("GameOver", f"こうかとんは爆死した")
+            
+            return
+
+        if pg.time.get_ticks() > 5000:#5秒たったら
+            tori_sfc = pg.image.load("fig/6.png")
+            tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 3.0)
+            tori_rct.center = tori_rct.centerx, tori_rct.centery
+            scrn_sfc.blit(tori_sfc, tori_rct)#こうかとん
+            pg.display.update()
+            tkm.showinfo("GameClear", f"こうかとんは生き延びた")
+            
+            return
+
+
         pg.display.update()
         clock.tick(1000)
     
@@ -97,3 +138,5 @@ if __name__=="__main__":
     main() #ゲームの本体
     pg.quit() #初期化の解除
     sys.exit()
+
+    
