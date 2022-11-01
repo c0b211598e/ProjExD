@@ -372,7 +372,7 @@ def main(winstyle=0):
             Explosion(bomb)
             tkm.showinfo("GameOver", f"こうかとんは戦死した")
             player.kill()
-            
+
         #リタイヤ
         if keyboard.is_pressed("x"):
             tkm.showinfo("GameOver", f"諦める")
@@ -383,14 +383,12 @@ def main(winstyle=0):
         if keyboard.is_pressed("r"):
             SCORE=0
 
-
         #ゲームクリア
         if SCORE >= 50:
             win_sound.play()
             tkm.showinfo("GameClear", f"こうかとんは敵を殲滅した")
             player.kill()
  
-
         # draw the scene
         dirty = all.draw(screen)
         pg.display.update(dirty)
