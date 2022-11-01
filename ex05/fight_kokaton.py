@@ -1,27 +1,3 @@
-#!/usr/bin/env python
-""" pygame.examples.aliens
-
-Shows a mini game where you have to defend against aliens.
-
-What does it show you about pygame?
-
-* pg.sprite, the difference between Sprite and Group.
-* dirty rectangle optimization for processing for speed.
-* music with pg.mixer.music, including fadeout
-* sound effects with pg.Sound
-* event processing, keyboard handling, QUIT handling.
-* a main loop frame limited with a game clock from pg.time.Clock
-* fullscreen switching.
-
-
-Controls
---------
-
-* Left and right arrows to move.
-* Space bar to shoot
-* f key to toggle between fullscreen.
-
-"""
 import tkinter as tk
 import tkinter.messagebox as tkm
 import random
@@ -37,8 +13,8 @@ if not pg.image.get_extended():
 
 # game constants
 MAX_SHOTS = 100  # most player bullets onscreen
-ALIEN_ODDS = 22  # chances a new alien appears
-BOMB_ODDS = 20  # chances a new bomb will drop
+ALIEN_ODDS = 60  # chances a new alien appears
+BOMB_ODDS = 10  # chances a new bomb will drop
 ALIEN_RELOAD = 12  # frames between new aliens
 SCREENRECT = pg.Rect(0, 0, 1040, 480)
 SCORE = 0
@@ -403,12 +379,6 @@ def main(winstyle=0):
     if pg.mixer:
         pg.mixer.music.fadeout(1000)
     pg.time.wait(1000)
-
-    
-
-    
-
-
 
 # call the "main" function if running this script
 if __name__ == "__main__":
