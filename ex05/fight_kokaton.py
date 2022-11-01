@@ -13,7 +13,7 @@ if not pg.image.get_extended():
 
 # game constants
 MAX_SHOTS = 100  # most player bullets onscreen
-ALIEN_ODDS = 60  # chances a new alien appears
+ALIEN_ODDS = 20  # chances a new alien appears
 BOMB_ODDS = 10  # chances a new bomb will drop
 ALIEN_RELOAD = 12  # frames between new aliens
 SCREENRECT = pg.Rect(0, 0, 1040, 480)
@@ -206,6 +206,7 @@ class Score(pg.sprite.Sprite):
             self.image = self.font.render(msg, 0, self.color)
 
 
+
 def main(winstyle=0):
     # Initialize pygame
     if pg.get_sdl_version()[0] == 2:
@@ -223,6 +224,8 @@ def main(winstyle=0):
 
     # Load images, assign to sprite classes
     # (do this before the classes are used, after screen setup)
+
+    #プレイヤー、敵、爆発、ミサイル画像
     img = load_image("fig/6.png")
     img.set_colorkey((0, 0, 0)) 
     Player.images = [img, pg.transform.flip(img, 1, 0)]
@@ -235,7 +238,7 @@ def main(winstyle=0):
     # decorate the game window
     icon = pg.transform.scale(Alien.images[0], (32, 32))
     pg.display.set_icon(icon)
-    pg.display.set_caption("Pygame Aliens")
+    pg.display.set_caption("戦えこうかとん")
     pg.mouse.set_visible(0)
 
     # create the background, tile the bgd image
@@ -284,6 +287,9 @@ def main(winstyle=0):
 
     # Run our main loop whilst the player is alive.
     while player.alive():
+        #上矢印キーをスコア追加
+        key_states = pg.key.get_pressed()
+        if key_states[pg.K_UP]: SCORE += 1
 
         # get input
         for event in pg.event.get():
@@ -355,19 +361,21 @@ def main(winstyle=0):
             Explosion(alien)
             SCORE = SCORE + 1
 
-        # See if alien boms hit the player.
+        # ゲームオーバー
         for bomb in pg.sprite.spritecollide(player, bombs, 1):
             if pg.mixer:
                 boom_sound.play()
             Explosion(player)
             Explosion(bomb)
-            tkm.showinfo("GameOver", f"こうかとんは爆死した")
+            tkm.showinfo("GameOver", f"こうかとんは戦死した")
             player.kill()
 
-        if SCORE >= 5:
+        #ゲームクリア
+        if SCORE >= 50:
             win_sound.play()
             tkm.showinfo("GameClear", f"こうかとんは敵を殲滅した")
             player.kill()
+ 
 
         # draw the scene
         dirty = all.draw(screen)
