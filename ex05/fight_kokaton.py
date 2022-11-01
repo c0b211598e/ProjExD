@@ -372,11 +372,16 @@ def main(winstyle=0):
             Explosion(bomb)
             tkm.showinfo("GameOver", f"こうかとんは戦死した")
             player.kill()
-
+            
+        #リタイヤ
         if keyboard.is_pressed("x"):
             tkm.showinfo("GameOver", f"諦める")
             player.kill()
             break
+
+        #リセット
+        if keyboard.is_pressed("r"):
+            SCORE=0
 
 
         #ゲームクリア
