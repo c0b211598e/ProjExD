@@ -10,6 +10,9 @@ import pygame as pg
 if not pg.image.get_extended():
     raise SystemExit("Sorry, extended image module required")
 
+import keyboard
+
+
 
 # game constants
 MAX_SHOTS = 100  # most player bullets onscreen
@@ -88,7 +91,7 @@ class Player(pg.sprite.Sprite):
 
 class Alien(pg.sprite.Sprite):
     """An alien space ship. That slowly moves down the screen."""
-
+    #敵の変更
     speed = 6
     animcycle = 12
     images = []
@@ -227,7 +230,7 @@ def main(winstyle=0):
 
     #プレイヤー、敵、爆発、ミサイル画像
     img = load_image("fig/6.png")
-    img.set_colorkey((0, 0, 0)) 
+    img.set_colorkey((0, 0, 0)) #透過
     Player.images = [img, pg.transform.flip(img, 1, 0)]
     img = load_image("explosion1.gif")
     Explosion.images = [img, pg.transform.flip(img, 1, 1)]
@@ -369,6 +372,12 @@ def main(winstyle=0):
             Explosion(bomb)
             tkm.showinfo("GameOver", f"こうかとんは戦死した")
             player.kill()
+
+        if keyboard.is_pressed("x"):
+            tkm.showinfo("GameOver", f"諦める")
+            player.kill()
+            break
+
 
         #ゲームクリア
         if SCORE >= 50:
