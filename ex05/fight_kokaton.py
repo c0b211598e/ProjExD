@@ -199,7 +199,7 @@ class Score(pg.sprite.Sprite):
         self.color = "white"
         self.lastscore = -1
         self.update()
-        self.rect = self.image.get_rect().move(10, 10)
+        self.rect = self.image.get_rect().move(50, 10)
 
     def update(self):
         """We only update the score in update() when it has changed."""
@@ -395,6 +395,8 @@ def main(winstyle=0):
 
         # cap the framerate at 40fps. Also called 40HZ or 40 times per second.
         clock.tick(40)
+
+    tkm.showinfo("GameClear", SCORE)
 
     if pg.mixer:
         pg.mixer.music.fadeout(1000)
